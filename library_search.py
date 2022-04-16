@@ -40,7 +40,7 @@ try:
                 searchpurpose = booknum[purpose + str(j)][i-2]
             break
 
-    if str(booknum[purpose+ str(j)][i-2]) == 'nan':
+    if str(booknum[purpose+ str(j)][i-2]) == 'nan' and find:
         print("老師沒公布"+ purpose +"QQ")
     elif find:
         haveclass = True
