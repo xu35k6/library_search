@@ -30,16 +30,17 @@ try:
         i +=1
         j = 1
         if classnum == Booknum:
-            print("以下為教授提供的"+purpose+'清單:')
-            while str(booknum[purpose+ str(j)][i-2]) != 'nan' and j<41:
-                print(j,":",booknum[purpose+ str(j)][i-2])
-                j+=1
-            j = input('請問您想搜尋第幾本書呢?')
-            searchpurpose = booknum[purpose + str(j)][i-2]
             find = True
+            if str(booknum[purpose+ str(j)][i-2]) != 'nan' and j<41:
+                print("以下為教授提供的"+purpose+'清單:')
+                while str(booknum[purpose+ str(j)][i-2]) != 'nan' and j<41:
+                    print(j,":",booknum[purpose+ str(j)][i-2])
+                    j+=1
+                j = input('請問您想搜尋第幾本書呢?')
+                searchpurpose = booknum[purpose + str(j)][i-2]
             break
 
-    if str(searchpurpose) == 'nan'or str(searchpurpose) == '\"\"':
+    if str(booknum[purpose+ str(j)][i-2]) == 'nan':
         print("老師沒公布"+ purpose +"QQ")
     elif find:
         haveclass = True
@@ -129,7 +130,6 @@ try:
                                 print('您搜尋的藏書只有一本')
                                 print('書名:',Firstbook.text) 
                         else:
-                            print(booknameline)
                             booknameline +=1 
 
                 library = driver.find_elements(By.XPATH,'//*[@id="bibDisplayContent"]/div[4]/table/tbody/tr/td/table[2]/tbody/tr['+ str(line)+']/td[1]')
